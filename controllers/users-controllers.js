@@ -116,7 +116,7 @@ const login = async(req, res, next) => {
     let token;
 try {
 //Use private key for both signup and login, as if used diff. keys, diff. tokens would be generated. So, when client later sends token with a request, it wouldn't be validated on the server
-token = jwt.sign({userId: identifiedUser.id, email: identifiedUser.email}, '', {
+token = jwt.sign({userId: identifiedUser.id, email: identifiedUser.email}, process.env.JWT_KEY, {
     expiresIn: '1h'
 })
 } 
